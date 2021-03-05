@@ -1,0 +1,32 @@
+.header {
+    font-size: 40px;
+}
+
+.navbar {
+    height: 200px;
+}
+
+header {
+    position: relative;
+    display: inline-flex;
+}
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: gray;
+    opacity: 60%;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+div h2{
+    color:white;
+    
+}
+
+.results {
+    height: 200px;
+}
