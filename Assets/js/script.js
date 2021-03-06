@@ -3,6 +3,7 @@ var movieSearch = document.getElementById('movieSearch');
 var submitBtn = document.getElementById('submitBtn');
 var movieTitle;
 var musicAPIkey;
+var spotifyToken;
 
 a = new URLSearchParams(document.location.search.substr(1))
 a.clientID;
@@ -23,21 +24,33 @@ function getToken (clientID, clientSecret){
     .then(function (response){
         return response.json();
     })
-    .then(({access_token})=>
-        fetch('https://api.spotify.com/v1/search?q=adventure&type=playlist&market=US&limit=1&offset=5', {
-            headers: {
-                Authorization: `Bearer ${access_token}`
-            }
-        })
-    )
-    .then((response)=>response.json())
     .then(function(data){
-        console.log(data);
+        var token = data.access_token;
+        spotifyToken = token;
+        return token;
     })
 }
 
-getToken(a.get("clientID"), a.get("clientSecret"));
+getToken(a.get("clientID"), a.get("clientSecret"))
 
+
+function getPlaylist(Genre) {
+    playlistURL = 'https://api.spotify.com/v1/search?q=' + Genre + '&type=playlist&market=US&limit=1&offset=5'
+    fetch(playlistURL, {
+        headers: {
+            Authorization: `Bearer ${spotifyToken}`
+        }
+    })
+    .then(function(response){
+        return response.json();
+    })
+    .then (function(data){
+        console.log(data);
+        var playlistName = data.playlists.items[0].name;
+        var playlistURL = data.playlists.items[0].external_urls.spotify;
+        displayContent(playlistName, playlistURL);
+    })
+}
 
 function handleSearch(event) {
     event.preventDefault();
@@ -45,31 +58,31 @@ function handleSearch(event) {
     getAPI(movieTitle)
 }
 
-
-function getAPI(movie) {
- var movieAPI = 'http://www.omdbapi.com/?apikey=' + APIkey + '&t=' + movie;
- fetch(movieAPI)
- .then(function(response){
-
-    if (!response.ok){
-        throw response.json();
-    }
-    return response.json();
- })
-
-    .then(function(data){
-        console.log(data)
-        var genre = data.Genre;
-        console.log(genre);
-        var genreArr = genre.split(', ');
-        console.log(genreArr);
-        getPlaylist(genreArr[0]);
-    })
-};
-
-function getPlaylist(genre) {
+function displayContent(name, link) {
     
 }
 
+
+function getAPI(movie) {
+    var movieAPI = 'http://www.omdbapi.com/?apikey=' + APIkey + '&t=' + movie;
+    fetch(movieAPI)
+    .then(function(response){
+   
+       if (!response.ok){
+           throw response.json();
+       }
+       return response.json();
+    })
+   
+       .then(function(data){
+           console.log(data)
+           var genre = data.Genre;
+           console.log(genre);
+           var genreArr = genre.split(', ');
+           var Genre = genreArr[0];
+           console.log(genreArr);
+           getPlaylist(Genre)
+       })
+   };
 
 submitBtn.addEventListener('click', handleSearch);

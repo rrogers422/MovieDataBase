@@ -29,4 +29,14 @@ div h2{
 
 .results {
     height: 200px;
+    margin-right:10px;
+    margin-left:10px;
+}
+
+#movie {
+    border: 2px solid black;
+}
+
+#playlist {
+    border: 2px solid black;
 }
