@@ -27,6 +27,25 @@ div h2{
     
 }
 
-.results {
-    height: 200px;
+#results {
+    height: 400px;
+    margin-right:10px;
+    margin-left:10px;
+}
+
+#movie {
+    border: 2px solid black;
+
+}
+
+#playlist {
+    border: 2px solid black;
+
+
+}
+
+.contain {
+    margin-right:10px;
+    margin-left:10px;
+    justify-content: space-between;
 }
