@@ -2,7 +2,32 @@ var APIkey = 'c37bbf42'
 var movieSearch = document.getElementById('movieSearch');
 var submitBtn = document.getElementById('submitBtn');
 var movieTitle;
-var musicAPIkey = 
+var musicAPIkey;
+
+a = new URLSearchParams(document.location.search.substr(1))
+debugger;
+a.clientID;
+a.clientSecret;
+
+function getToken (clientID, clientSecret){
+    fetch('https://accounts.spotify.com/api/token', {
+        headers: {
+            Authorization: `Basic ${btoa(`${clientID}+${clientSecret}`)}`,
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        method: "POST",
+        body: JSON.stringify({grant_type:'client_credentials'})
+    })
+    .then(function (response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data);
+    })
+}
+
+getToken(a.get("clientID"), a.get("clientSecret"));
+
 
 function handleSearch(event) {
     event.preventDefault();
