@@ -59,7 +59,7 @@ function handleSearch(event) {
 }
 
 function displayContent(name, link) {
-    
+
 }
 
 
@@ -79,7 +79,7 @@ function getAPI(movie) {
            var genre = data.Genre;
            console.log(genre);
            var genreArr = genre.split(', ');
-           var Genre = genreArr[0];
+           var Genre = genreArr[1];
            console.log(genreArr);
            getPlaylist(Genre)
        })
