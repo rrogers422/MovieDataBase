@@ -5,22 +5,32 @@ var movieTitle;
 var musicAPIkey;
 
 a = new URLSearchParams(document.location.search.substr(1))
-debugger;
 a.clientID;
 a.clientSecret;
 
 function getToken (clientID, clientSecret){
+    const formData = new URLSearchParams();
+    formData.append('grant_type', 'client_credentials');
+
     fetch('https://accounts.spotify.com/api/token', {
         headers: {
-            Authorization: `Basic ${btoa(`${clientID}+${clientSecret}`)}`,
+            Authorization: `Basic ${btoa(`${clientID}:${clientSecret}`)}`,
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         method: "POST",
-        body: JSON.stringify({grant_type:'client_credentials'})
+        body: formData.toString()
     })
     .then(function (response){
         return response.json();
     })
+    .then(({access_token})=>
+        fetch('https://api.spotify.com/v1/search?q=adventure&type=playlist&market=US&limit=1&offset=5', {
+            headers: {
+                Authorization: `Bearer ${access_token}`
+            }
+        })
+    )
+    .then((response)=>response.json())
     .then(function(data){
         console.log(data);
     })
@@ -49,7 +59,17 @@ function getAPI(movie) {
 
     .then(function(data){
         console.log(data)
+        var genre = data.Genre;
+        console.log(genre);
+        var genreArr = genre.split(', ');
+        console.log(genreArr);
+        getPlaylist(genreArr[0]);
     })
 };
+
+function getPlaylist(genre) {
+    
+}
+
 
 submitBtn.addEventListener('click', handleSearch);
