@@ -38,7 +38,7 @@ getToken(a.get("clientID"), a.get("clientSecret"))
 
 
 function getPlaylist(Genre) {
-    playlistURL = 'https://api.spotify.com/v1/search?q=' + Genre + '&type=playlist&market=US&limit=1&offset=5'
+    playlistURL = 'https://api.spotify.com/v1/search?q=' + Genre + '&type=playlist&market=US&limit=5&offset=5'
     fetch(playlistURL, {
         headers: {
             Authorization: `Bearer ${spotifyToken}`
@@ -49,16 +49,18 @@ function getPlaylist(Genre) {
     })
     .then (function(data){
         console.log(data);
-        var playlistName = data.playlists.items[0].name;
-        var playlistURL = data.playlists.items[0].external_urls.spotify;
-        var description = data.playlists.items[0].description;
-        var image = data.playlists.items[0].images[0].url;
+        var playlistName = data.playlists.items[1].name;
+        var playlistURL = data.playlists.items[1].external_urls.spotify;
+        var description = data.playlists.items[1].description;
+        var image = data.playlists.items[1].images[0].url;
         displayPlaylist(playlistName, playlistURL, description, image);
     })
 }
 
 function handleSearch(event) {
     event.preventDefault();
+    movieEl.innerHTML = "";
+    playlistEl.innerHTML = "";
     movieTitle = movieSearch.value;
     getAPI(movieTitle)
 }
@@ -115,7 +117,7 @@ function getAPI(movie) {
        .then(function(data){
            var genre = data.Genre;
            var genreArr = genre.split(', ');
-           var Genre = genreArr[1];
+           var Genre = genreArr[0];
            getPlaylist(Genre)
            displayMovie(data.Title, data.Poster, Genre);
        })
