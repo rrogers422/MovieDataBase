@@ -28,24 +28,58 @@ div h2{
 }
 
 #results {
-    height: 400px;
     margin-right:10px;
     margin-left:10px;
+
 }
 
-#movie {
-    border: 2px solid black;
+#container {
+    width:100%;
+    padding-bottom:40px; 
+    padding-top:40px;
+    background-color: #76586d;
+}
 
+
+#movie {
+    
 }
 
 #playlist {
-    border: 2px solid black;
 
+}
 
+#playlist h2 {
+    color: black;
+    text-align: center;
+}
+
+#playlist a img {
+    width: 100%;
+    height:auto;
+}
+
+#playlist p {
+    text-align:center;
 }
 
 .contain {
     margin-right:10px;
     margin-left:10px;
     justify-content: space-between;
+}
+
+#movie h2 {
+    color: black;
+    text-align:center;
+}
+
+#movie img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#movie p {
+    text-align:center;
 }

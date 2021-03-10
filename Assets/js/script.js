@@ -1,10 +1,13 @@
 var APIkey = 'c37bbf42'
 var movieSearch = document.getElementById('movieSearch');
 var submitBtn = document.getElementById('submitBtn');
+var movieEl = document.getElementById('movie');
+var playlistEl = document.getElementById('playlist');
 var movieTitle;
 var musicAPIkey;
 var spotifyToken;
 
+// Need to put these into URL
 a = new URLSearchParams(document.location.search.substr(1))
 a.clientID;
 a.clientSecret;
@@ -48,7 +51,9 @@ function getPlaylist(Genre) {
         console.log(data);
         var playlistName = data.playlists.items[0].name;
         var playlistURL = data.playlists.items[0].external_urls.spotify;
-        displayContent(playlistName, playlistURL);
+        var description = data.playlists.items[0].description;
+        var image = data.playlists.items[0].images[0].url;
+        displayPlaylist(playlistName, playlistURL, description, image);
     })
 }
 
@@ -58,8 +63,41 @@ function handleSearch(event) {
     getAPI(movieTitle)
 }
 
-function displayContent(name, link) {
+function displayMovie(name, poster, genre) {
 
+    var movieTitle = document.createElement('h2');
+    var movieName = name;
+    movieTitle.textContent = movieName;
+
+    var posterIMG = document.createElement('img');
+    posterIMG.setAttribute('src', poster);
+
+    var genreType = document.createElement('p');
+    genreName = genre;
+    genreType.textContent = "Genre: " + genreName;
+
+    movieEl.append(movieTitle, posterIMG, genreType);
+}
+
+
+function displayPlaylist(name, URL, description, image){
+
+    var playlistName = document.createElement('h2');
+    var playName = name;
+    playlistName.textContent = playName;
+
+    var descrip = document.createElement('p');
+    var playDescrip = description;
+    descrip.textContent = playDescrip;
+
+    var display = document.createElement('a')
+    var picture = document.createElement('img');
+    picture.setAttribute('src', image);
+    display.setAttribute('href', URL);
+
+    display.append(picture);
+
+    playlistEl.append(playlistName, descrip, display)
 }
 
 
@@ -75,13 +113,11 @@ function getAPI(movie) {
     })
    
        .then(function(data){
-           console.log(data)
            var genre = data.Genre;
-           console.log(genre);
            var genreArr = genre.split(', ');
            var Genre = genreArr[1];
-           console.log(genreArr);
            getPlaylist(Genre)
+           displayMovie(data.Title, data.Poster, Genre);
        })
    };
 
