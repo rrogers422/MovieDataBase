@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./Assets/css/style.css">
     <title>MovieDataBase</title>
@@ -11,7 +13,7 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid justify-co">
-          <h1 class="header display-4 navbar-brand">Something Fun</h1>
+          <h1 class="header display-4 navbar-brand">Bust a Movie</h1>
           <form class="col-4 d-flex">
             <input class="form-control me-2" id='movieSearch' type="search" placeholder="Search a Movie!" aria-label="Search">
             <button class="btn btn-outline-success" id='submitBtn' type="submit">Search</button>
@@ -22,16 +24,17 @@
     <header> 
         <img src="./Assets/Images/background.jpg" class="img-fluid" alt="Responsive image">
         <div class="text">
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ab quae excepturi saepe reprehenderit est delectus autem eos quis molestias, numquam velit ipsam iste eius, nobis ea sapiente. Perferendis, provident.</h2>
+            <h2>Your one-stop-shop for finding a playlist that brings you right back to your favorite movies. Search your movie, and we will provide you with a playlist that fits right in with that genre.</h2>
         </div>
     </header>
 
-    <div class='container'>
-        <div id='results' class='row justify-content-between'>
-            <div id='movie' class="col-5">
+    
+    <div id='container' class='container-fluid'>
+        <div id='results' class='row justify-content-center'>
+            <div id='movie' class="col-lg-5 col-sm-12">
 
             </div>
-            <div id='playlist' class='col-5'>
+            <div id='playlist' class='col-lg-5 col-sm-12'>
   
             </div>
 

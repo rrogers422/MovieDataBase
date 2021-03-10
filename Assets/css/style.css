@@ -1,3 +1,7 @@
+* {
+    font-family:'Open Sans', sans-serif;
+}
+
 .header {
     font-size: 40px;
 }
@@ -9,6 +13,14 @@
 header {
     position: relative;
     display: inline-flex;
+}
+
+h1 {
+    font-family: 'Fascinate', cursive;
+}
+
+header h2 {
+    font-family:'Open Sans', sans-serif;
 }
 
 .text {
@@ -28,24 +40,58 @@ div h2{
 }
 
 #results {
-    height: 400px;
     margin-right:10px;
     margin-left:10px;
+    padding-right:90px;
 }
 
-#movie {
-    border: 2px solid black;
+#container {
+    width:100%;
+    padding-bottom:40px; 
+    padding-top:40px;
+    background-color: #76586d;
+    padding-right:20px;
+    padding-left:20px;
+}
 
+
+#movie {
+    
 }
 
 #playlist {
-    border: 2px solid black;
-
 
 }
 
-.contain {
-    margin-right:10px;
-    margin-left:10px;
-    justify-content: space-between;
+#playlist h2 {
+    color: black;
+    text-align: center;
+}
+
+#playlist a img {
+    width: 100%;
+    height:auto;
+}
+
+#playlist p {
+    text-align:center;
+}
+
+
+
+#movie h2 {
+    color: black;
+    text-align:center;
+}
+
+#movie img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#movie p {
+    text-align:center;
+    padding: 30px;
+    font-size:25px;
 }
