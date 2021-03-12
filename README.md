@@ -12,7 +12,10 @@ Project uses he following languages/frameworks:
 * jQuery
 * Bootstrap 4
 
-##### Url to Deployment
+##### Url to Deployment and Directions
+https://rrogers422.github.io/MovieDataBase/
+In order for the spotify API to work properply the user needs the have the proper credentials in which we would provide for them in a google document. At the end of the url you would add ?clientID=&clientSecret=
+
 
 ###### Screenshot of Applicaton
 ![Screenshot](Assets/Images/Bust-A-Movie.png)
