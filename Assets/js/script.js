@@ -7,11 +7,11 @@ var movieTitle;
 var musicAPIkey;
 var spotifyToken;
 
-// Need to put these into URL
 a = new URLSearchParams(document.location.search.substr(1))
 a.clientID;
 a.clientSecret;
 
+// Spotify requres a Token to fetch api - this function saves that token.
 function getToken (clientID, clientSecret){
     const formData = new URLSearchParams();
     formData.append('grant_type', 'client_credentials');
@@ -34,9 +34,10 @@ function getToken (clientID, clientSecret){
     })
 }
 
+// Passes the client ID and client Secret from the URL to the getToken function
 getToken(a.get("clientID"), a.get("clientSecret"))
 
-
+// Function that uses Spotify API to generate a playlist based on genre from the movie the user searched
 function getPlaylist(Genre) {
     playlistURL = 'https://api.spotify.com/v1/search?q=' + Genre + '&type=playlist&market=US&limit=5&offset=5'
     fetch(playlistURL, {
@@ -57,6 +58,7 @@ function getPlaylist(Genre) {
     })
 }
 
+// Function to capture the movie the user enters and call the getAPI function to use the OMDb API
 function handleSearch(event) {
     event.preventDefault();
     movieEl.innerHTML = "";
@@ -65,6 +67,7 @@ function handleSearch(event) {
     getAPI(movieTitle)
 }
 
+// Function to display the searched movie onto the page.
 function displayMovie(name, poster, genre) {
 
     var movieTitle = document.createElement('h2');
@@ -81,7 +84,7 @@ function displayMovie(name, poster, genre) {
     movieEl.append(movieTitle, posterIMG, genreType);
 }
 
-
+// Function to display Spotify playlist onto the page.
 function displayPlaylist(name, URL, description, image){
 
     var playlistName = document.createElement('h2');
@@ -102,7 +105,7 @@ function displayPlaylist(name, URL, description, image){
     playlistEl.append(playlistName, descrip, display)
 }
 
-
+// Function that fetches the OMDb API given the movie the user searches
 function getAPI(movie) {
     var movieAPI = 'http://www.omdbapi.com/?apikey=' + APIkey + '&t=' + movie;
     fetch(movieAPI)
@@ -121,6 +124,7 @@ function getAPI(movie) {
            getPlaylist(Genre)
            displayMovie(data.Title, data.Poster, Genre);
        })
-   };
+};
 
+// Event listener to call the handleSearch function when the search button is pressed
 submitBtn.addEventListener('click', handleSearch);
