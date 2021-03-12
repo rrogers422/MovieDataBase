@@ -126,5 +126,5 @@ function getAPI(movie) {
        })
 };
 
-// Event listener to call the handleSearch function when the search button is pressed.
+// Event listener to call the handleSearch function when the search button is pressed
 submitBtn.addEventListener('click', handleSearch);
