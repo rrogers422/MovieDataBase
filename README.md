@@ -19,3 +19,6 @@ In order for the spotify API to work properply the user needs the have the prope
 
 ###### Screenshot of Applicaton
 ![Screenshot](Assets/Images/Bust-A-Movie.png)
+<img width="1440" alt="Screen Shot 2021-03-11 at 7 57 06 PM" src="https://user-images.githubusercontent.com/69885419/110875804-4f343100-82a4-11eb-8757-37f1eb677071.png">
+<img width="1440" alt="Screen Shot 2021-03-11 at 7 58 05 PM" src="https://user-images.githubusercontent.com/69885419/110875833-5f4c1080-82a4-11eb-993b-a374503804b5.png">
+<img width="1440" alt="Screen Shot 2021-03-11 at 7 58 17 PM" src="https://user-images.githubusercontent.com/69885419/110875863-6a9f3c00-82a4-11eb-8451-bbcd8384ffa6.png">
